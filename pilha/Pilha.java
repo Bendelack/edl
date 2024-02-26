@@ -12,7 +12,7 @@ public class Pilha {
 
     public void push ( int e ) {
         if ( (this.t + 1) == this.c )
-            this.increasyCapacity();
+            this.increaseCapacity();
         this.p[++this.t] = e;
     }
 
@@ -39,7 +39,7 @@ public class Pilha {
         return this.p[this.t+1];
     }
 
-    private void increasyCapacity( ) {
+    private void increaseCapacity( ) {
         int[] newArray = new int[2*this.c];
         for ( int i = 0; i < this.c; i++ )
             newArray[i] = this.p[i];
