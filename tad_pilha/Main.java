@@ -1,14 +1,17 @@
 package tad_pilha;
 
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        
+
         try {
 
             Scanner scanner = new Scanner(System.in);
-            
+
             Pilha pp = new Pilha();
             long start, end, time;
 
@@ -24,11 +27,15 @@ public class Main {
             end = System.currentTimeMillis();
             time = end - start;
 
+            System.out.println(pp.top());
+            pp.empty();
+            System.out.println(pp.top());
+
             System.out.println("Execution time: " + time);
 
             scanner.close();
 
-        } catch (Exception e) {
+        } catch (IsEmptyException e) {
 
             System.out.println(e);
 
@@ -36,3 +43,21 @@ public class Main {
 
     }
 }
+
+
+
+/*
+ 
+BufferedReader buffRead = new BufferedReader(new FileReader(path));
+		String linha = "";
+		while (true) {
+			if (linha != null) {
+				System.out.println(linha);
+
+			} else
+				break;
+			linha = buffRead.readLine();
+		}
+		buffRead.close();
+
+ */

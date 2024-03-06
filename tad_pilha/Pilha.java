@@ -49,4 +49,10 @@ public class Pilha {
         this.p = newArray;
     }
 
+    public void empty ( ) {
+        int[] newArray = new int[this.c];
+        this.p = newArray;
+        this.t = -1;
+    }
+
 }
