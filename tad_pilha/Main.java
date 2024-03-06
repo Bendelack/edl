@@ -1,13 +1,14 @@
+package tad_pilha;
 
 import java.util.Scanner;
 
-public class testePilha {
+public class Main {
     public static void main(String[] args) {
-
+        
         try {
 
             Scanner scanner = new Scanner(System.in);
-
+            
             Pilha pp = new Pilha();
             long start, end, time;
 
@@ -24,6 +25,8 @@ public class testePilha {
             time = end - start;
 
             System.out.println("Execution time: " + time);
+
+            scanner.close();
 
         } catch (Exception e) {
 
