@@ -7,5 +7,8 @@ public class Main {
         pilha.pushRed(13);
         pilha.pushBlack(22);
 
+        System.out.println(pilha.topRed());
+        System.out.println(pilha.topBlack());
+
     }
 }
