@@ -2,11 +2,12 @@ package tad_pilha.pilha_colorida;
 
 public class PilhaColorida {
     
-    private int redTop;
-    private int blackTop;
-    private int capacity;
-    private int[] vetor;
+    private int redTop; // indice topo vermelho
+    private int blackTop; // indice topo preto
+    private int capacity; // capacidade do vetor
+    private int[] vetor; // vetor que armazena os dados
 
+    // constructor
     public PilhaColorida () {
 
         this.redTop = -1;
@@ -19,7 +20,7 @@ public class PilhaColorida {
     public void pushRed ( int e ) {
         if (this.blackTop - this.redTop == 1) 
             this.increaseCapacity();
-            
+
         this.vetor[++this.redTop] = e;
     }
 
