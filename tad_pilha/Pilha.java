@@ -49,8 +49,10 @@ public class Pilha {
         this.p = newArray;
     }
 
+    private void decreasyCapacity ( ) { }
+
     public void empty ( ) {
-        Object[] newArray = new int[this.c];
+        Object[] newArray = new Object[this.c];
         this.p = newArray;
         this.t = -1;
     }

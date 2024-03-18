@@ -17,6 +17,7 @@ public class EnergiaSolar {
 
         Integer element = -1;
 
+        System.out.println();
         System.out.println("Digite 0 para finalizar a execução do programa!");
 
         // leitura dos dados
@@ -31,21 +32,42 @@ public class EnergiaSolar {
         }
 
         // alocação das linhas de força
-        Integer i = 0;
-        while ( !fimLinhas ) {
+
+        while ( true ) {
+            Integer i = 1;
+
             Pilha linhaDaVez = new Pilha();
-            linhaDaVez.push(casas.get(i));
+            ArrayList<Integer> aux = new ArrayList<>();
+            // linhaDaVez.push(casas.get(i));
 
             while ( true ) {
 
-                if ( casas.get(i)  < casas.get(i+1))
-                    linhaDaVez.push(casas.get(i));
+                if ( casas.get(i-1) > casas.get(i) && casas.get(i) != 0) {
+                    linhaDaVez.push(casas.get(i-1));
+                    casas.add(i-1, 0);
+                } else {
+                    aux.add(casas.get(i-1));
+                    casas.add(i-1, 0);
+                }
 
 
-                System.out.println(casas.get(i));
+                if ( i == (casas.size() - 1) )
+                    break;
+                i++;
+                System.out.println("while interno");
     
             }
-            //linhas.add(linhaDaVez);
+            linhas.add(linhaDaVez);
+            int x = 0;
+            for (int index = 0; index < casas.size(); index++) {
+                if (casas.get(index) != 0)
+                    x++;
+            }
+
+            if (x == 0 )
+                break;
+
+            System.out.println("While externo");
 
         }
 
