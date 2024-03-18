@@ -3,17 +3,20 @@ package tad_pilha.energia_solar;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import tad_pilha.IsEmptyException;
 import tad_pilha.Pilha;
 
 public class EnergiaSolar {
 
     public static void main(String[] args) {
 
+        try {
+            
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Integer> casas = new ArrayList<>(); // armazena os valores de cada casa
         ArrayList<Pilha> linhas = new ArrayList<>(); // armazena as linhas de força
-        Boolean fimLinhas = false;
+        //Boolean fimLinhas = false;
 
         Integer element = -1;
 
@@ -50,11 +53,12 @@ public class EnergiaSolar {
                 } else if ( linhaDaVez.size() == 0 && casas.get(i-1) < casas.get(i-1) ) {
                     linhaDaVez.push(casas.get(i));
                     restantes.add(casas.get(i-1));
-                } else if ( linhaDaVez.size() > 0 && linhaDaVez.top() > casas.get(i) ){
+                } else if ( linhaDaVez.size() > 0 && (Integer)linhaDaVez.top() > casas.get(i) ){
                     linhaDaVez.push(casas.get(i));
-                } else if ( linhaDaVez.size() > 0 && linhaDaVez.top() < casas.get(i) ){
+                } else if ( linhaDaVez.size() > 0 && (Integer)linhaDaVez.top() < casas.get(i) ){
                     restantes.add(casas.get(i));
                 }
+                //System.out.println(linhaDaVez.top());
             }
 
             casas = restantes; // fazendo o arraylist apontar para os elementos restantes
@@ -74,6 +78,9 @@ public class EnergiaSolar {
         }
 
         scanner.close();
+        } catch (IsEmptyException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
