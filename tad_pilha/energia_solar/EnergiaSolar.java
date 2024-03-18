@@ -34,41 +34,43 @@ public class EnergiaSolar {
         // alocação das linhas de força
 
         while ( true ) {
-            Integer i = 1;
 
-            Pilha linhaDaVez = new Pilha();
-            ArrayList<Integer> aux = new ArrayList<>();
-            // linhaDaVez.push(casas.get(i));
+            Pilha linhaDaVez = new Pilha(); // armazena as casas de uma linha de força
+            ArrayList<Integer> restantes = new ArrayList<>();
 
-            while ( true ) {
+            // se o houver apenas um elemente, ele será inserido na ultima pilha
+            if ( casas.size() == 1 )
+                linhaDaVez.push(casas.get(0));
 
-                if ( casas.get(i-1) > casas.get(i) && casas.get(i) != 0) {
-                    linhaDaVez.push(casas.get(i-1));
-                    casas.add(i-1, 0);
-                } else {
-                    aux.add(casas.get(i-1));
-                    casas.add(i-1, 0);
+            for ( int i = 1; i < casas.size(); i++ ){
+                //condição verdadeira para a pilha atuaal vazia
+                if ( linhaDaVez.size() == 0 && casas.get(i-1) > casas.get(i-1) ){
+                    linhaDaVez.push(i-1); // adicionando o primeiro elemento na pilha
+                    linhaDaVez.push(i); // adicionando o elemento seguinte na pilha
+                } else if ( linhaDaVez.size() == 0 && casas.get(i-1) < casas.get(i-1) ) {
+                    linhaDaVez.push(casas.get(i));
+                    restantes.add(casas.get(i-1));
+                } else if ( linhaDaVez.size() > 0 && linhaDaVez.top() > casas.get(i) ){
+                    linhaDaVez.push(casas.get(i));
+                } else if ( linhaDaVez.size() > 0 && linhaDaVez.top() < casas.get(i) ){
+                    restantes.add(casas.get(i));
                 }
-
-
-                if ( i == (casas.size() - 1) )
-                    break;
-                i++;
-                System.out.println("while interno");
-    
-            }
-            linhas.add(linhaDaVez);
-            int x = 0;
-            for (int index = 0; index < casas.size(); index++) {
-                if (casas.get(index) != 0)
-                    x++;
             }
 
-            if (x == 0 )
+            casas = restantes; // fazendo o arraylist apontar para os elementos restantes
+
+            // se o tamanho do arraylist for zero, o laço termina
+            if (casas.size() == 0 )
                 break;
 
-            System.out.println("While externo");
 
+            linhas.add(linhaDaVez); // adcionando a linha atual no arraylist de pilhas
+
+        }
+
+        for ( int i = 0; i < linhas.size(); i++){
+            linhas.get(i).listar();
+            System.out.println();
         }
 
         scanner.close();

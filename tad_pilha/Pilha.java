@@ -2,9 +2,9 @@ package tad_pilha;
 
 public class Pilha {
     
-    private int t;
-    private int c;
-    private Object[] p;
+    private int t; // armazena a quantidade de elementos
+    private int c; // armazena a capacidade do vetor
+    private Object[] p; // vetor que armazena os elementos da pilha
 
     public Pilha ( ) {
         this.t = -1;
@@ -47,6 +47,18 @@ public class Pilha {
             newArray[i] = this.p[i];
         this.c = this.c*2;
         this.p = newArray;
+    }
+
+    public void listar() throws IsEmptyException{
+        if ( this.t == -1 ) {
+            IsEmptyException e;
+            e = new IsEmptyException(this.t);
+            throw e;
+        }
+
+        for ( int i = 0; i < this.t; i++ )
+            System.out.print(this.p[i] + " ");
+
     }
 
     private void decreasyCapacity ( ) { }
