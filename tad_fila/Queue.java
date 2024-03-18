@@ -6,6 +6,5 @@ interface Queue {
     public Object fisrt() throws EmptyQueueException;
     public void queue(Object e);
     public Object dequeue() throws EmptyQueueException;
-    public void increaseCapacity();
 
 }

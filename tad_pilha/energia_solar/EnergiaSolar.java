@@ -16,7 +16,6 @@ public class EnergiaSolar {
 
         ArrayList<Integer> casas = new ArrayList<>(); // armazena os valores de cada casa
         ArrayList<Pilha> linhas = new ArrayList<>(); // armazena as linhas de força
-        //Boolean fimLinhas = false;
 
         Integer element = -1;
 
@@ -46,20 +45,25 @@ public class EnergiaSolar {
                 linhaDaVez.push(casas.get(0));
 
             for ( int i = 1; i < casas.size(); i++ ){
-                //condição verdadeira para a pilha atuaal vazia
-                if ( linhaDaVez.size() == 0 && casas.get(i-1) > casas.get(i-1) ){
+                //condição verdadeira para a pilha atual vazia
+                if ( linhaDaVez.size() == 0 && casas.get(i-1) > casas.get(i) ){
+                    System.out.println("Entrou no if 1");
                     linhaDaVez.push(i-1); // adicionando o primeiro elemento na pilha
                     linhaDaVez.push(i); // adicionando o elemento seguinte na pilha
-                } else if ( linhaDaVez.size() == 0 && casas.get(i-1) < casas.get(i-1) ) {
+                } else if ( linhaDaVez.size() == 0 && casas.get(i-1) < casas.get(i) ) {
+                    System.out.println("Entrou no if 2");
                     linhaDaVez.push(casas.get(i));
                     restantes.add(casas.get(i-1));
-                } else if ( linhaDaVez.size() > 0 && (Integer)linhaDaVez.top() > casas.get(i) ){
+                } else if ( linhaDaVez.size() > 0 && casas.get(i-1) > casas.get(i) ){
+                    System.out.println("Entrou no if 3");
                     linhaDaVez.push(casas.get(i));
-                } else if ( linhaDaVez.size() > 0 && (Integer)linhaDaVez.top() < casas.get(i) ){
+                    System.out.println(linhaDaVez.top());
+                } else if ( linhaDaVez.size() > 0 && casas.get(i-1) < casas.get(i) ){
+                    System.out.println("Entrou no if 4");
                     restantes.add(casas.get(i));
                 }
-                //System.out.println(linhaDaVez.top());
             }
+            System.out.println("> " + linhaDaVez.top());
 
             casas = restantes; // fazendo o arraylist apontar para os elementos restantes
 
@@ -71,6 +75,7 @@ public class EnergiaSolar {
             linhas.add(linhaDaVez); // adcionando a linha atual no arraylist de pilhas
 
         }
+        System.out.println(linhas.get(1).size());
 
         for ( int i = 0; i < linhas.size(); i++){
             linhas.get(i).listar();

@@ -55,9 +55,10 @@ public class Pilha {
             e = new IsEmptyException(this.t);
             throw e;
         }
-
-        for ( int i = 0; i < this.t; i++ )
-            System.out.print(this.p[i] + " ");
+        System.out.println("O tamanho desta pilha é: " + this.t);
+        for ( int i = 0; i < this.t; i++ ){
+            System.out.print(this.p[i] + ", ");
+        }
 
     }
 
