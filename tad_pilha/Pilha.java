@@ -16,6 +16,7 @@ public class Pilha {
         if ( (this.t + 1) == this.c )
             this.increaseCapacity();
         this.p[++this.t] = e;
+        System.out.println("elemento " + e + " adicionado com sucesso");
     }
 
     public Object top ( ) throws IsEmptyException {
@@ -55,10 +56,10 @@ public class Pilha {
             e = new IsEmptyException(this.t);
             throw e;
         }
-        System.out.println("O tamanho desta pilha é: " + this.t);
-        for ( int i = 0; i < this.t; i++ ){
+        for ( int i = 0; i < this.t+1; i++ ){
             System.out.print(this.p[i] + ", ");
         }
+        System.out.println();
 
     }
 
