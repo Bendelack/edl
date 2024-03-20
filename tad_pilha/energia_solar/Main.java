@@ -67,11 +67,13 @@ public class Main {
             
             // laço for para colocar os valores restantes na pilha invertida
             for (int index = 0; index < n; index++)
-                pilhaInvertida.push((Integer)restantes.pop());
+                pilhaInvertida.push(restantes.pop());
 
             // laço for para colocar os valores da pilha invertida no ArrayList de casas
-            for (int index = 0; index < n; index++)
-                casas.add((Integer)pilhaInvertida.pop());
+            for (int index = 0; index < n; index++){
+                Integer ultimo = (Integer)pilhaInvertida.pop();
+                casas.add(ultimo);
+            }
 
             // se o tamanho do arraylist for zero, o laço termina
             if (casas.size() == 0 )

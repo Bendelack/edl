@@ -8,8 +8,8 @@ public class Pilha {
 
     public Pilha ( ) {
         this.t = -1;
-        this.c = 8;
-        this.p = new Object[8];
+        this.c = 2;
+        this.p = new Object[2];
     }
 
     public void push ( Object e ) {
@@ -22,7 +22,7 @@ public class Pilha {
     public Object top ( ) throws IsEmptyException {
         if ( this.t == -1 ) {
             IsEmptyException e;
-            e = new IsEmptyException(this.t);
+            e = new IsEmptyException("Pilha vazia.");
             throw e;
         }
         return this.p[t];
@@ -35,13 +35,14 @@ public class Pilha {
     public Object pop ( ) throws IsEmptyException {
         if ( this.t == -1 ) {
             IsEmptyException e;
-            e = new IsEmptyException(this.t);
+            e = new IsEmptyException("Pilha vazia.");
             throw e;
         }
+        Object toRemove = this.p[this.t];
         this.t--;// = this.t - 1;
         if ( ((this.size() * 100) / this.c) <= 25 )
             this.decreasyCapacity();
-        return this.p[this.t+1];
+        return toRemove;
     }
 
     private void increaseCapacity( ) {
@@ -55,7 +56,7 @@ public class Pilha {
     public void listar() throws IsEmptyException{
         if ( this.t == -1 ) {
             IsEmptyException e;
-            e = new IsEmptyException(this.t);
+            e = new IsEmptyException("Pilha vazia.");
             throw e;
         }
         System.out.print("{");
@@ -77,8 +78,8 @@ public class Pilha {
      }
 
     public void empty ( ) {
-        Object[] newArray = new Object[8];
-        this.c = 8;
+        Object[] newArray = new Object[2];
+        this.c = 2;
         this.p = newArray;
         this.t = -1;
     }

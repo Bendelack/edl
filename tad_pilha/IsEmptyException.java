@@ -2,14 +2,8 @@ package tad_pilha;
 
 public class IsEmptyException extends Exception {
 
-    private int t;
-
-    public IsEmptyException (int t) {
-        super("Pilha vazia.");
-        this.t = t;
+    public IsEmptyException (String err) {
+        super(err);
     }
 
-    public int getTop ( ) {
-        return this.t;
-    }
 }
