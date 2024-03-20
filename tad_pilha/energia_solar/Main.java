@@ -2,11 +2,10 @@ package tad_pilha.energia_solar;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import tad_pilha.IsEmptyException;
 import tad_pilha.Pilha;
 
-public class EnergiaSolar {
+public class Main {
 
     public static void main(String[] args) {
 
@@ -16,16 +15,11 @@ public class EnergiaSolar {
 
         ArrayList<Integer> casas = new ArrayList<>(); // armazena os valores de cada casa
         ArrayList<Pilha> linhas = new ArrayList<>(); // armazena as linhas de força
-        /*casas.add(3);
-        casas.add(6);
-        casas.add(2);
-        casas.add(7);
-        casas.add(5);*/
 
         Integer element = -1;
 
         System.out.println();
-        System.out.println("Digite 0 para finalizar a execução do programa!");
+        System.out.println("Digite 0 para finalizar as entradas do programa!");
 
         // leitura dos dados
         while (true) {
@@ -39,73 +33,52 @@ public class EnergiaSolar {
         }
 
         // alocação das linhas de força
-        ArrayList<Integer> restantes = new ArrayList<>();
-
         while ( true ) {
 
             Pilha linhaDaVez = new Pilha(); // armazena as casas de uma linha de força
-            restantes.clear();
+            Pilha restantes = new Pilha(); // pilha que armazena as casas restantes para análise
 
             // se o houver apenas um elemente, ele será inserido na ultima pilha
             if ( casas.size() == 1 )
                 linhaDaVez.push(casas.get(0));
 
-            System.out.println(" casas size > " + casas.size());
-            for (int i = 1; i < casas.size(); i++) {
-                System.out.println("Vasco");
-            }
-
-            System.out.println();
-            for (int index = 0; index < casas.size(); index++) {
-                System.out.print(casas.get(index) + " ");
-            }
-            System.out.println();
-
             for ( int i = 1; i < casas.size(); i++ ){
-                //condição verdadeira para a pilha atual vazia
-                /*if ( casas.size() == i )
-                    break;*/
-                System.out.println(i + " " + casas.size());
                 if ( linhaDaVez.size() == 0 && casas.get(i-1) > casas.get(i) ){
-                    System.out.println("if 1");
-                    linhaDaVez.push(casas.get(i-1)); // adicionando o primeiro elemento na pilha
-                    linhaDaVez.push(casas.get(i)); // adicionando o elemento seguinte na pilha
-                } else if ( linhaDaVez.size() == 0 && casas.get(i-1) < casas.get(i) ) {
-                    System.out.println("if 2");
+                    linhaDaVez.push(casas.get(i-1));
                     linhaDaVez.push(casas.get(i));
-                    restantes.add(casas.get(i-1));
+                } else if ( linhaDaVez.size() == 0 && casas.get(i-1) < casas.get(i) ) {
+                    linhaDaVez.push(casas.get(i));
+                    restantes.push(casas.get(i-1));
                 } else if ( linhaDaVez.size() > 0 && casas.get(i-1) > casas.get(i) ){
-                    System.out.println("if 3");
                     linhaDaVez.push(casas.get(i));
                 } else if ( linhaDaVez.size() > 0 && casas.get(i-1) < casas.get(i) ){
-                    System.out.println("if 4");
-                    restantes.add(casas.get(i));
+                    restantes.push(casas.get(i));
                 }
             }
-            //linhaDaVez.listar();
+            // adicionando a linha da vez ao ArrayList de pilhas
             linhas.add(linhaDaVez);
 
-            // System.out.println("casas antes");
-            // for (int i = 0; i < casas.size(); i++) {
-            //     System.out.println(casas.get(i));
-            // }
+            //limpando o ArrayList que armazena as casas para análise
             casas.clear();
-            casas = restantes; // fazendo o arraylist apontar para os elementos restantes
-            /*System.out.println("casas depois");
-            for (int i = 0; i < casas.size(); i++) {
-                System.out.println(casas.get(i));
-            }*/
-            //System.out.println("tamanho do ArrayList: " + casas.size());
+            // pilha que recebe os elementos restantes temporariamente, mas com os valores invertidos
+            Pilha pilhaInvertida = new Pilha();
+            // variável que armazena a quantidade de elementos restantes
+            Integer n = restantes.size();
+            
+            // laço for para colocar os valores restantes na pilha invertida
+            for (int index = 0; index < n; index++)
+                pilhaInvertida.push((Integer)restantes.pop());
+
+            // laço for para colocar os valores da pilha invertida no ArrayList de casas
+            for (int index = 0; index < n; index++)
+                casas.add((Integer)pilhaInvertida.pop());
 
             // se o tamanho do arraylist for zero, o laço termina
             if (casas.size() == 0 )
                 break;
-
-
-            //linhas.add(linhaDaVez); // adcionando a linha atual no arraylist de pilhas
-
         }
 
+        // imprimindo os valores de cada linha de força
         for ( int i = 0; i < linhas.size(); i++){
             System.out.print("Linha de força " + (i+1) + ": ");
             linhas.get(i).listar();
