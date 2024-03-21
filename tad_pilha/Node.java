@@ -15,12 +15,4 @@ public class Node {
         this.next = null;
     }
 
-    // public Object value ( ) {
-    //     return this._value;
-    // }
-
-    // public Node next ( ) {
-    //     return this._next;
-    // }
-
 }

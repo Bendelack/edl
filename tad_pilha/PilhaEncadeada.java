@@ -1,8 +1,6 @@
 package tad_pilha;
 
-import tad_pilha.Node;
-
-public class PilhaEncadeada {
+public class PilhaEncadeada implements Pilha {
 
     private Node top; // representa o topo da pilha
     private Integer t; // armazena a quantidade de elementos da pilha
@@ -21,7 +19,6 @@ public class PilhaEncadeada {
         this.top = toPush;
         this.t++;
         
-        System.out.println("Elemento " + e + " inserido com sucesso.");
     }
 
     public Object top () throws IsEmptyException {
@@ -40,19 +37,28 @@ public class PilhaEncadeada {
             throw e;
         }
 
-        Object toRemove = this.top.value;
-
-        if ( this.t == 1 ) {
-            this.top.value = null;
-        }
-
-        Node ultimo = new Node();
-        ultimo.value = this.top.next;
-        ultimo.next = null;
-        this.top = ultimo;
+        Node toRemove = this.top;
+        Object toRemoveValue = toRemove.value;
+        Node penultimo = new Node();
+        penultimo = toRemove.next;
+        this.top.next = null;
+        this.top.value = null;
+        this.top = penultimo;
 
         this.t--;
-        return toRemove;
+        return toRemoveValue;
+
+    }
+
+    public Integer size () {
+        return this.t;
+    }
+
+    @Override
+    public void empty (){
+        Node newNode = new Node();
+        this.top = newNode;
+        this.t = 0;
 
     }
         

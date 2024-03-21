@@ -3,7 +3,7 @@ package tad_pilha.energia_solar;
 import java.util.ArrayList;
 import java.util.Scanner;
 import tad_pilha.IsEmptyException;
-import tad_pilha.Pilha;
+import tad_pilha.PilhaArray;
 
 public class Main {
 
@@ -14,7 +14,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Integer> casas = new ArrayList<>(); // armazena os valores de cada casa
-        ArrayList<Pilha> linhas = new ArrayList<>(); // armazena as linhas de força
+        ArrayList<PilhaArray> linhas = new ArrayList<>(); // armazena as linhas de força
 
         Integer element = -1;
 
@@ -35,8 +35,8 @@ public class Main {
         // alocação das linhas de força
         while ( true ) {
 
-            Pilha linhaDaVez = new Pilha(); // armazena as casas de uma linha de força
-            Pilha restantes = new Pilha(); // pilha que armazena as casas restantes para análise
+            PilhaArray linhaDaVez = new PilhaArray(); // armazena as casas de uma linha de força
+            PilhaArray restantes = new PilhaArray(); // pilha que armazena as casas restantes para análise
 
             // se o houver apenas um elemente, ele será inserido na ultima pilha
             if ( casas.size() == 1 )
@@ -61,7 +61,7 @@ public class Main {
             //limpando o ArrayList que armazena as casas para análise
             casas.clear();
             // pilha que recebe os elementos restantes temporariamente, mas com os valores invertidos
-            Pilha pilhaInvertida = new Pilha();
+            PilhaArray pilhaInvertida = new PilhaArray();
             // variável que armazena a quantidade de elementos restantes
             Integer n = restantes.size();
             

@@ -9,52 +9,21 @@ public class Main {
 
             Scanner scanner = new Scanner(System.in);
 
-            Pilha pp = new Pilha();
-            long start, end, time;
+            PilhaEncadeada linkedStack = new PilhaEncadeada();
 
-            start = System.currentTimeMillis();
+            for ( int i = 0; i < 100; i++ )
+                linkedStack.push(i);
 
-            int n = scanner.nextInt();
-
-            for ( int i = 0; i < n; i++ ){
-                int e = scanner.nextInt();
-                pp.push(e);
-            }
-
-            end = System.currentTimeMillis();
-            time = end - start;
-
-            System.out.println(pp.top());
-            pp.empty();
-            System.out.println(pp.top());
-
-            System.out.println("Execution time: " + time);
+            for ( int i = 0; i < 100; i++ )
+                System.out.println(linkedStack.pop());
 
             scanner.close();
 
         } catch (IsEmptyException e) {
 
-            System.out.println(e);
+            System.out.println(e.getMessage());
 
         }
 
     }
 }
-
-
-
-/*
- 
-BufferedReader buffRead = new BufferedReader(new FileReader(path));
-		String linha = "";
-		while (true) {
-			if (linha != null) {
-				System.out.println(linha);
-
-			} else
-				break;
-			linha = buffRead.readLine();
-		}
-		buffRead.close();
-
- */
