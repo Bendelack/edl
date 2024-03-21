@@ -6,13 +6,11 @@ public class Main {
         try {
             FilaArray fila = new FilaArray();
 
-            for (int index = 0; index < 10; index++)
+            for (int index = 0; index < 1000; index++)
                 fila.enfileirar(index);
     
-            for (int index = 0; index < 10; index++){
+            for (int index = 0; index < 1000; index++)
                 System.out.println(fila.desenfileirar());
-                System.out.println("t > " + fila.tamanho());
-            }
 
         } catch (EmptyQueueException e) {
             System.out.println(e.getMessage());

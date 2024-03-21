@@ -71,13 +71,14 @@ public class FilaArray implements Fila {
 
     private void decreasyCapacity() {
         Object[] newArray = new Object[this.n/2];
+        Integer tamanhoAtual = this.tamanho();
 
         for (int x = 0; x < this.tamanho(); x++)
             newArray[x] = this.array[(x+this.i)%this.n];
 
         this.i = 0;
-        this.f = this.tamanho();
         this.n = this.n / 2;
+        this.f = tamanhoAtual;
         this.array = newArray;
 
     }
