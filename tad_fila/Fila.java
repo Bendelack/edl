@@ -1,5 +1,7 @@
 package tad_fila;
 
+// segue o esquema FIFO: Fisrt In, Fisrt Out.
+
 interface Fila {
 
     public Integer tamanho();

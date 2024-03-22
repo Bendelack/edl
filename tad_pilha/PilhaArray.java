@@ -81,6 +81,12 @@ public class PilhaArray implements Pilha {
 
      }
 
+     @Override
+     public Boolean isEmpty() {
+         // TODO Auto-generated method stub
+         return this.t == -1;
+     }
+
     @Override
     public void empty ( ) {
         Object[] newArray = new Object[2];

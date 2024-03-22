@@ -10,6 +10,7 @@ public class PilhaEncadeada implements Pilha {
         this.t = 0;
     }
 
+    @Override
     public void push ( Object e ) {
         Node toPush = new Node();
         toPush.value = e;
@@ -21,6 +22,7 @@ public class PilhaEncadeada implements Pilha {
         
     }
 
+    @Override
     public Object top () throws IsEmptyException {
         if ( this.t == 0 ) {
             IsEmptyException e;
@@ -30,6 +32,7 @@ public class PilhaEncadeada implements Pilha {
         return this.top.value;
     }
 
+    @Override
     public Object pop ( ) throws IsEmptyException {
         if ( this.t == 0 ) {
             IsEmptyException e;
@@ -50,8 +53,14 @@ public class PilhaEncadeada implements Pilha {
 
     }
 
+    @Override
     public Integer size () {
         return this.t;
+    }
+
+    @Override
+    public Boolean isEmpty() {
+        return this.t == 0;
     }
 
     @Override
