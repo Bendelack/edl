@@ -14,5 +14,4 @@ public interface Pilha {
 
     public Boolean isEmpty ( );
 
-    public void empty ( ); // limpa a pilha (semelhnate ao método clear() do ArrayList)
 }

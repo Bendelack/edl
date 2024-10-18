@@ -9,13 +9,18 @@ public class Main {
 
             Scanner scanner = new Scanner(System.in);
 
-            PilhaEncadeada linkedStack = new PilhaEncadeada();
+            PilhaArray pilha = new PilhaArray();
 
-            for ( int i = 0; i < 100; i++ )
-                linkedStack.push(i);
+            for ( int i = 0; i < 10; i++ )
+                pilha.push(i);
 
-            for ( int i = 0; i < 100; i++ )
-                System.out.println(linkedStack.pop());
+            System.out.println(pilha.top());
+            System.out.println(pilha.size());
+
+            for ( int i = 0; i < 10; i++ )
+                System.out.println(pilha.pop());
+
+            System.out.println(pilha.isEmpty());
 
             scanner.close();
 
