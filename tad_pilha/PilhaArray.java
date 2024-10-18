@@ -6,23 +6,22 @@ public class PilhaArray implements Pilha {
     private int c; // armazena a capacidade do vetor
     private Object[] p; // vetor que armazena os elementos da pilha
 
-    public PilhaArray ( ) {
+    public PilhaArray ( ) { // método construtor
         this.t = -1;
         this.c = 2;
         this.p = new Object[2];
     }
 
     @Override
-    public void push ( Object e ) {
+    public void push ( Object e ) { // adiciona um elemento no topo da ilha
         if ( (this.t + 1) == this.c )
             this.increaseCapacity();
         this.p[++this.t] = e;
-        //System.out.println("elemento " + e + " adicionado com sucesso");
     }
 
     @Override
-    public Object top ( ) throws IsEmptyException {
-        if ( this.t == -1 ) {
+    public Object top ( ) throws IsEmptyException { // retorna o elemento do topo da pilha
+        if ( this.isEmpty() ) {
             IsEmptyException e;
             e = new IsEmptyException("Pilha vazia.");
             throw e;
@@ -31,25 +30,23 @@ public class PilhaArray implements Pilha {
     }
 
     @Override
-    public Integer size ( ) {
+    public Integer size ( ) { // retorna a quantidade de elementos da pilha
         return this.t + 1;
     }
 
     @Override
-    public Object pop ( ) throws IsEmptyException {
-        if ( this.t == -1 ) {
+    public Object pop ( ) throws IsEmptyException { // remove e retorna o elemento do topo da pilha
+        if ( this.isEmpty() ) {
             IsEmptyException e;
             e = new IsEmptyException("Pilha vazia.");
             throw e;
         }
         Object toRemove = this.p[this.t];
         this.t--;// = this.t - 1;
-        if ( ((this.size() * 100) / this.c) <= 25 )
-            this.decreasyCapacity();
         return toRemove;
     }
 
-    private void increaseCapacity( ) {
+    private void increaseCapacity( ) { // aumenta a capacidade da pilha. (substitui por um array 2x maior)
         Object[] newArray = new Object[2*this.c];
         for ( int i = 0; i < this.c; i++ )
             newArray[i] = this.p[i];
@@ -57,42 +54,9 @@ public class PilhaArray implements Pilha {
         this.p = newArray;
     }
 
-    public void listar() throws IsEmptyException{
-        if ( this.t == -1 ) {
-            IsEmptyException e;
-            e = new IsEmptyException("Pilha vazia.");
-            throw e;
-        }
-        System.out.print("{");
-        for ( int i = 0; i < this.t; i++ ){
-            System.out.print(this.p[i] + ", ");
-        }
-        System.out.print(this.p[this.t]);
-        System.out.println("}");
-
-    }
-
-    private void decreasyCapacity ( ) { 
-        Object[] newArray = new Object[this.c/2];
-        for ( int i = 0; i < this.t+1; i++ )
-            newArray[i] = this.p[i];
-        this.c = this.c/2;
-        this.p = newArray;
-
-     }
-
-     @Override
-     public Boolean isEmpty() {
-         // TODO Auto-generated method stub
-         return this.t == -1;
-     }
-
     @Override
-    public void empty ( ) {
-        Object[] newArray = new Object[2];
-        this.c = 2;
-        this.p = newArray;
-        this.t = -1;
-    }
+    public Boolean isEmpty() { // retorna 'true' se a pilha estiver vazia e 'false' caso contrário
+        return this.t == -1;
+     }
 
 }
