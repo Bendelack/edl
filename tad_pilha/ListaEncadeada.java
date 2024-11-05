@@ -32,7 +32,7 @@ public class ListaEncadeada {
         this.size++;
     }
 
-    public Object pop(){
+    public Object pop_back(){
         Node lastNode = this.last;
         Object topo = lastNode.valor;
 
