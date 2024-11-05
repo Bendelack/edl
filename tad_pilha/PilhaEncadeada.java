@@ -31,7 +31,7 @@ public class PilhaEncadeada implements Pilha {
             e = new IsEmptyException("Pilha vazia.");
             throw e;
         }
-        Object valor = this.p.pop();
+        Object valor = this.p.pop_back();
         return valor;
     }
 
