@@ -2,11 +2,11 @@ package tad_pilha;
 
 public class PilhaEncadeada implements Pilha {
     private int t;
-    private ListaEncadeada p;
+    private ListaDuplamenteEncadeada p;
 
     public PilhaEncadeada(){
         this.t = 0;
-        this.p = new ListaEncadeada();
+        this.p = new ListaDuplamenteEncadeada();
     }
 
     @Override

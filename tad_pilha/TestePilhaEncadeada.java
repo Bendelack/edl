@@ -2,12 +2,13 @@ package tad_pilha;
 
 public class TestePilhaEncadeada {
     public static void main(String args[]){
-        ListaEncadeada pilha = new ListaEncadeada();
-        pilha.push_back(10);
-        pilha.push_back(11);
-        pilha.push_back(12);
-        pilha.push_back(13);
-        System.out.println(pilha.pop());
-        System.out.println(pilha.pop());
+        ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
+
+        for (int i = 0; i < 10; i++) {
+            lista.push_front(i+1);
+            System.out.println(lista.first());
+        }
+        for (int i = 0; i < 10; i++)
+            System.out.println(lista.pop_front());
     }
 }
