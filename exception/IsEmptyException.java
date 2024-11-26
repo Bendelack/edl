@@ -1,4 +1,5 @@
-package tad_pilha;
+package exception;
+
 
 public class IsEmptyException extends Exception {
 

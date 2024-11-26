@@ -1,5 +1,7 @@
 package tad_pilha;
 
+import exception.IsEmptyException;
+
 public class PilhaArray implements Pilha {
     
     private int t; // armazena a quantidade de elementos

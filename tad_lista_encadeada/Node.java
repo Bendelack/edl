@@ -1,4 +1,4 @@
-package tad_pilha;
+package tad_lista_encadeada;
 
 public class Node {
     public Object valor;
