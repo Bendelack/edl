@@ -1,4 +1,6 @@
 package tad_pilha;
+import exception.IsEmptyException;
+import tad_lista_encadeada.ListaDuplamenteEncadeada;
 
 public class PilhaEncadeada implements Pilha {
     private int t;

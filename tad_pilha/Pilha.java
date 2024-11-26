@@ -1,5 +1,7 @@
 package tad_pilha;
 
+import exception.IsEmptyException;
+
 // segue o esquema LIFO: Last In, Fisrt Out.
 
 public interface Pilha {

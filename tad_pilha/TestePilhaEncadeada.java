@@ -1,4 +1,5 @@
 package tad_pilha;
+import tad_lista_encadeada.ListaDuplamenteEncadeada;
 
 public class TestePilhaEncadeada {
     public static void main(String args[]){

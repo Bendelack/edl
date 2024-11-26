@@ -2,6 +2,8 @@ package tad_pilha;
 
 import java.util.Scanner;
 
+import exception.IsEmptyException;
+
 public class Main {
     public static void main(String[] args) {
 
